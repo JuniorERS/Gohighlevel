@@ -18,7 +18,8 @@ css = (root / "block2.css").read_text()
 
 markup, script = html.split("<script>\n", 1)
 start = script.index("// ============================================================\n// REQUIRED: PASTE YOUR BOOKING")
-end = script.index('var LOGO_URL = "";\n') + len('var LOGO_URL = "";\n')
+logo_line = script.index("var LOGO_URL = ")
+end = script.index("\n", logo_line) + 1
 settings, script = script[start:end], script[:start] + script[end:]
 assert "`" not in css and "${" not in css
 
