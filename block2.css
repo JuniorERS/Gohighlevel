@@ -219,6 +219,35 @@ html, body { overflow-x: clip; }
 #ghl-dummy .step em { font-style: normal; font-weight: 600; color: var(--ink); }
 #ghl-dummy .section-cta { margin-top: 56px; }
 
+/* ===== About: comparison cards ===== */
+#ghl-dummy .compare-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; }
+#ghl-dummy .compare-card {
+  display: flex; flex-direction: column; padding: 28px 24px; background: #fff;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+#ghl-dummy .compare-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+#ghl-dummy .compare-card h3 { font-family: var(--font-serif); font-size: 21px; font-weight: 600; line-height: 1.25; color: var(--ink); margin-bottom: 18px; }
+#ghl-dummy .compare-label { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+#ghl-dummy .compare-get { font-size: 15px; color: var(--muted); margin-bottom: 22px; }
+#ghl-dummy .compare-who { display: flex; align-items: flex-start; gap: 12px; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--border); }
+#ghl-dummy .compare-icon {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 30px; height: 30px; border-radius: 50%; background: #efeee9; color: var(--ink);
+}
+#ghl-dummy .compare-icon svg { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+#ghl-dummy .compare-answer { font-size: 16px; font-weight: 700; color: var(--ink); }
+#ghl-dummy .compare-card--us {
+  background: var(--ink); border-color: var(--accent); color: var(--text-light);
+  box-shadow: var(--shadow-lg), 0 0 36px rgba(240, 196, 18, 0.16);
+}
+#ghl-dummy .compare-card--us h3 { color: #fff; padding-bottom: 14px; border-bottom: 2px solid var(--accent); display: inline-block; }
+#ghl-dummy .compare-card--us .compare-label { color: #9a9a9a; }
+#ghl-dummy .compare-card--us .compare-get { color: #e9e9e9; }
+#ghl-dummy .compare-card--us .compare-who { border-top-color: rgba(255, 255, 255, 0.18); }
+#ghl-dummy .compare-card--us .compare-answer { color: var(--accent); }
+#ghl-dummy .compare-icon--yes { background: var(--accent); color: var(--ink); }
+
 /* ===== S6. Final CTA ===== */
 #ghl-dummy .cta {
   padding: 112px 0 104px; text-align: center;
@@ -278,6 +307,7 @@ html, body { overflow-x: clip; }
   #ghl-dummy .nav-links a:not(.btn)::after { display: none; }
   #ghl-dummy .nav-links .nav-mobile-cta { display: inline-flex; margin-top: 18px; }
   #ghl-dummy .problem-grid { grid-template-columns: 1fr; max-width: 640px; }
+  #ghl-dummy .compare-grid { grid-template-columns: repeat(2, 1fr); }
   #ghl-dummy .steps { grid-template-columns: 1fr; gap: 32px; max-width: 640px; }
   #ghl-dummy .steps::before { display: none; }
   #ghl-dummy .step:not(:last-child)::before {
@@ -299,6 +329,7 @@ html, body { overflow-x: clip; }
   #ghl-dummy .hero-ctas .btn { width: 100%; white-space: normal; text-align: center; }
   #ghl-dummy .hero-ctas .text-link { justify-content: center; padding-left: 0; }
   #ghl-dummy .section-cta .btn { width: 100%; white-space: normal; text-align: center; }
+  #ghl-dummy .compare-grid { grid-template-columns: 1fr; }
   #ghl-dummy .footer-grid { grid-template-columns: 1fr 1fr; }
   #ghl-dummy .footer-brand { grid-column: 1 / -1; }
   #ghl-dummy .cta .btn { width: 100%; white-space: normal; }
