@@ -13,9 +13,9 @@
         <a href="/roi-calculator">ROI Calculator</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
-        <a href="#get-started" class="btn btn-primary nav-mobile-cta">Book a Call</a>
+        <a href="/contact" data-book class="btn btn-primary nav-mobile-cta">Book a Call</a>
       </nav>
-      <a href="#get-started" class="btn btn-primary nav-cta">Book a Call</a>
+      <a href="/contact" data-book class="btn btn-primary nav-cta">Book a Call</a>
       <button type="button" class="burger" data-burger aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -37,7 +37,7 @@
         You focus on installing turf. We handle the rest.
       </p>
       <div class="hero-ctas">
-        <a href="#get-started" class="btn btn-primary btn-lg">Start Receiving Estimates Today
+        <a href="/contact" data-book class="btn btn-primary btn-lg">Start Receiving Estimates Today
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="#how" class="text-link">or see how it works
@@ -122,64 +122,54 @@
         </li>
       </ol>
       <div class="section-cta">
-        <a href="#get-started" class="btn btn-primary btn-lg">Start Receiving Estimates Today
+        <a href="/contact" data-book class="btn btn-primary btn-lg">Start Receiving Estimates Today
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ===================== S7. CTA + LEAD FORM ===================== -->
+  <!-- ===================== S6. FINAL CTA ===================== -->
   <section class="cta" id="get-started">
     <div class="container cta-inner">
-      <div class="cta-copy">
-        <p class="eyebrow eyebrow--light">Get Started</p>
-        <h2 class="cta-title">Ready to fill your calendar with <span class="hl">installs?</span></h2>
-        <p class="cta-sub">Tell us where to reach you. We'll show you exactly how many booked jobs your market can deliver in a free 20-minute strategy call.</p>
-      </div>
-      <form class="lead-form" data-lead-form novalidate>
-        <label class="field">
-          <span>Full name</span>
-          <input type="text" name="name" autocomplete="name" placeholder="Jane Smith" required>
-        </label>
-        <label class="field">
-          <span>Email</span>
-          <input type="email" name="email" autocomplete="email" placeholder="jane@yourhvac.com" required>
-        </label>
-        <button type="submit" class="btn btn-primary btn-block btn-lg" data-submit>Book My Strategy Call</button>
-        <p class="form-msg form-msg--error" data-error role="alert" hidden></p>
-        <p class="form-msg form-msg--success" data-success role="status" hidden></p>
-        <p class="form-note">No spam. We'll only use this to schedule your call.</p>
-      </form>
+      <h2 class="cta-title">Ready to spend your days installing, not quoting?</h2>
+      <p class="cta-sub">A short discovery call is the fastest way to see exactly how it would work for your business, and what it would take to fill your calendar with serious homeowners.</p>
+      <a href="/contact" data-book class="btn btn-primary btn-lg">Book a Discovery Call
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <p class="cta-note">You only pay for booked estimates. You own your account and data. No obligation.</p>
     </div>
   </section>
 
-  <!-- ===================== S8. FOOTER ===================== -->
+  <!-- ===================== S7. FOOTER ===================== -->
   <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="#top" class="brand brand--light" aria-label="Rip &amp; Roll Turf home">
-          <span class="brand-logo" aria-hidden="true"></span>
-          <span class="brand-name">Rip &amp; Roll <em>Turf</em></span>
-        </a>
-        <p>Booked, qualified estimates for artificial turf installers.</p>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="brand brand--light" aria-label="Rip &amp; Roll Turf home">
+            <span class="brand-logo" aria-hidden="true"></span>
+            <span class="brand-name">Rip &amp; Roll <em>Turf</em></span>
+          </a>
+          <p>We deliver booked estimates, not shared leads. A done-for-you growth system for turf installers who do it right the first time.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="/">Home</a>
+          <a href="/roi-calculator">ROI Calculator</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get in touch</h4>
+          <!-- EMAIL: replace with your real email when your domain is set up -->
+          <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+          <a href="/contact" data-book>Book a discovery call</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Pages</h4>
-        <a href="/">Home</a>
-        <a href="/roi-calculator">ROI Calculator</a>
-        <a href="/about">About</a>
-        <a href="/privacy-policy">Privacy Policy</a>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Rip &amp; Roll Turf. All rights reserved. <span aria-hidden="true">&middot;</span> <a href="/privacy-policy">Privacy Policy</a></p>
+        <p>Turf growth systems, built and managed in-house.</p>
       </div>
-      <div class="footer-col">
-        <h4>Get in touch</h4>
-        <a href="/contact">Contact</a>
-        <a href="mailto:hello@example.com">hello@example.com</a>
-        <a href="#top">Back to top</a>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>&copy; 2026 Rip &amp; Roll Turf. All rights reserved.</p>
     </div>
   </footer>
 
@@ -187,27 +177,32 @@
 
 <script>
 // ============================================================
-// REQUIRED: PASTE YOUR GHL INBOUND WEBHOOK URL BETWEEN THE QUOTES BELOW
-// Leave it blank and the page runs in DEMO MODE — the form SHOWS a
-// success message but NO lead is saved to your CRM.
+// REQUIRED: PASTE YOUR BOOKING LINK BETWEEN THE QUOTES BELOW
+// (e.g. your GHL calendar link). Every "Book a Call" button uses it.
+// Leave it blank and the buttons go to your /contact page instead.
 // ============================================================
 
-var GHL_WEBHOOK = "";
+var BOOKING_URL = "";
 
 (function () {
-  var LEAD_SOURCE = "Landing Page";
-  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
   function init() {
     if (window.__ghlDummyInit) return;
     var root = document.getElementById('ghl-dummy');
     if (!root) return; // markup not there yet; a later event will retry
     window.__ghlDummyInit = true;
 
+    initBookingLinks(root);
     initNav(root);
     initSmoothScroll(root);
     initCountUp(root);
-    initForm(root);
+  }
+
+  // ---------- Book-a-call buttons -> booking link ----------
+  function initBookingLinks(root) {
+    if (!BOOKING_URL) return; // keep the /contact fallback
+    root.querySelectorAll('[data-book]').forEach(function (a) {
+      a.setAttribute('href', BOOKING_URL);
+    });
   }
 
   // ---------- Sticky nav + burger ----------
@@ -250,10 +245,6 @@ var GHL_WEBHOOK = "";
         var offset = nav ? nav.offsetHeight + 8 : 0;
         var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-        if (id === '#get-started') {
-          var first = root.querySelector('[data-lead-form] input');
-          if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 700);
-        }
       });
     });
   }
@@ -294,69 +285,6 @@ var GHL_WEBHOOK = "";
       });
     }, { threshold: 0.35 });
     io.observe(strip);
-  }
-
-  // ---------- Lead form -> GHL Inbound Webhook ----------
-  function initForm(root) {
-    var form = root.querySelector('[data-lead-form]');
-    if (!form) return;
-    var nameInput = form.querySelector('input[name="name"]');
-    var emailInput = form.querySelector('input[name="email"]');
-    var btn = form.querySelector('[data-submit]');
-    var errorEl = form.querySelector('[data-error]');
-    var successEl = form.querySelector('[data-success]');
-    var btnLabel = btn.textContent;
-
-    function showError(msg, input) {
-      successEl.hidden = true;
-      errorEl.textContent = msg;
-      errorEl.hidden = false;
-      if (input) { input.setAttribute('aria-invalid', 'true'); input.focus(); }
-    }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      errorEl.hidden = true;
-      successEl.hidden = true;
-      nameInput.removeAttribute('aria-invalid');
-      emailInput.removeAttribute('aria-invalid');
-
-      var fullName = nameInput.value.trim().replace(/\s+/g, ' ');
-      var email = emailInput.value.trim();
-
-      if (!fullName) { showError('Please enter your name.', nameInput); return; }
-      if (!EMAIL_RE.test(email)) { showError('Please enter a valid email address.', emailInput); return; }
-
-      var parts = fullName.split(' ');
-      var payload = {
-        first_name: parts[0],
-        last_name: parts.slice(1).join(' '),
-        full_name: fullName,
-        email: email,
-        source: LEAD_SOURCE
-      };
-
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-
-      if (!GHL_WEBHOOK) {
-        console.log('[DEMO MODE] GHL_WEBHOOK is empty — no lead was saved. Payload that would be sent:', payload);
-      } else {
-        try {
-          fetch(GHL_WEBHOOK, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(payload) })
-            .catch(function (err) { console.warn('Lead webhook request failed:', err); });
-        } catch (err) {
-          console.warn('Lead webhook request failed:', err);
-        }
-      }
-
-      // Optimistic success (no-cors responses can't be read)
-      successEl.textContent = "Thanks! We'll be in touch.";
-      successEl.hidden = false;
-      form.reset();
-      btn.disabled = false;
-      btn.textContent = btnLabel;
-    });
   }
 
   window.addEventListener('hydrationDone', init);
