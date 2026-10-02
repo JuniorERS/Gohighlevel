@@ -33,6 +33,7 @@
 
 /* ===== Base ===== */
 #ghl-dummy {
+  visibility: visible !important; /* page is hidden until this stylesheet loads */
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
