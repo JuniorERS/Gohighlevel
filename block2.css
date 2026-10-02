@@ -150,20 +150,24 @@
 
 /* ===== S3. Stats ===== */
 #ghl-dummy .stats {
-  position: relative; padding: 64px 0;
-  background: radial-gradient(900px 300px at 100% 0%, rgba(240, 196, 18, 0.12), transparent 60%), linear-gradient(135deg, var(--ink) 0%, #262626 100%);
+  position: relative; padding: 72px 0; overflow: hidden;
+  background: radial-gradient(700px 320px at 100% 0%, rgba(240, 196, 18, 0.16), transparent 65%), linear-gradient(135deg, var(--ink) 0%, #222222 100%);
+  border-top: 4px solid var(--accent);
   color: var(--text-light);
 }
 #ghl-dummy .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+#ghl-dummy .stat { position: relative; padding-left: 20px; border-left: 1px solid rgba(255, 255, 255, 0.12); }
 #ghl-dummy .stat-num {
   font-family: var(--font-serif); font-weight: 600; letter-spacing: -0.02em; line-height: 1;
-  font-size: clamp(38px, 5vw, 54px); font-variant-numeric: tabular-nums; color: #fff; white-space: nowrap;
+  font-size: clamp(40px, 5vw, 56px); font-variant-numeric: tabular-nums; white-space: nowrap;
+  color: var(--accent);
 }
-#ghl-dummy .stat-num--gold {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
-}
-#ghl-dummy .stat-label { margin-top: 14px; font-size: 15px; color: var(--muted-light); }
+#ghl-dummy .stats.js-reveal .stat { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+#ghl-dummy .stats.js-reveal.is-visible .stat { opacity: 1; transform: none; }
+#ghl-dummy .stats.js-reveal.is-visible .stat:nth-child(2) { transition-delay: .12s; }
+#ghl-dummy .stats.js-reveal.is-visible .stat:nth-child(3) { transition-delay: .24s; }
+#ghl-dummy .stats.js-reveal.is-visible .stat:nth-child(4) { transition-delay: .36s; }
+#ghl-dummy .stat-label { margin-top: 14px; font-size: 15px; line-height: 1.45; color: #e9e9e9; }
 
 /* ===== Sections ===== */
 #ghl-dummy .section { padding: 104px 0; }
@@ -330,6 +334,7 @@
   #ghl-dummy .brand-logo { width: 56px; height: 30px; }
   #ghl-dummy .stats-grid { grid-template-columns: 1fr 1fr; gap: 32px 12px; }
   #ghl-dummy .stat-label { font-size: 13px; }
+  #ghl-dummy .stat { padding-left: 12px; }
   #ghl-dummy .tier { padding: 36px 20px; }
   #ghl-dummy .tier-price span { font-size: 40px; }
   #ghl-dummy .footer-grid { grid-template-columns: 1fr; }

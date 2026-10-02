@@ -48,23 +48,23 @@
   </section>
 
   <!-- ===================== S3. STAT STRIP ===================== -->
-  <section class="stats" data-stats aria-label="Results">
+  <section class="stats" data-stats aria-label="Our promises">
     <div class="container stats-grid">
       <div class="stat">
-        <div class="stat-num stat-num--gold" data-count data-target="60" data-suffix="%+">60%+</div>
-        <div class="stat-label">Lead-to-appointment rate</div>
+        <div class="stat-num" data-count data-target="72" data-suffix="hrs">72hrs</div>
+        <div class="stat-label">From kickoff to ads live</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-count data-target="10" data-prefix="&lt;" data-suffix="s">&lt;10s</div>
-        <div class="stat-label">Speed to lead</div>
+        <div class="stat-num">$0</div>
+        <div class="stat-label">Upfront fees</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-count data-target="85" data-suffix="%">85%</div>
-        <div class="stat-label">Appointment show rate</div>
+        <div class="stat-num">1</div>
+        <div class="stat-label">Turf installer per service area</div>
       </div>
       <div class="stat">
-        <div class="stat-num" data-count data-target="100" data-suffix="%">100%</div>
-        <div class="stat-label">HVAC-focused</div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Long-term contracts</div>
       </div>
     </div>
   </section>
@@ -325,11 +325,11 @@ var GHL_WEBHOOK = "";
     });
   }
 
-  // ---------- Stat count-up (once, on scroll into view) ----------
+  // ---------- Stat strip: fade in + count-up (once, on scroll into view) ----------
   function initCountUp(root) {
     var strip = root.querySelector('[data-stats]');
-    var nums = root.querySelectorAll('[data-count]');
-    if (!strip || !nums.length || !('IntersectionObserver' in window)) return;
+    if (!strip || !('IntersectionObserver' in window)) return;
+    var nums = strip.querySelectorAll('[data-count]');
 
     function render(el, value) {
       el.textContent = (el.getAttribute('data-prefix') || '') +
@@ -337,6 +337,7 @@ var GHL_WEBHOOK = "";
         (el.getAttribute('data-suffix') || '');
     }
     nums.forEach(function (el) { render(el, 0); });
+    strip.classList.add('js-reveal');
 
     function animate(el) {
       var target = parseFloat(el.getAttribute('data-target')) || 0;
@@ -354,6 +355,7 @@ var GHL_WEBHOOK = "";
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
+        strip.classList.add('is-visible');
         nums.forEach(animate);
         io.disconnect();
       });
