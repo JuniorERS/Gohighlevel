@@ -1,7 +1,9 @@
 """Build home-single-paste.html from block1-html-js.html + block2.css.
 
 Layout of the output (one paste into a GHL Custom JS/HTML element):
-  1. <script> settings (BOOKING_URL, LOGO_URL) + styles injected into <head>
+  1. <script> settings (BOOKING_URL, LOGO_URL) - kept separate so a typo here
+     can't stop the styles from loading
+     <script> styles injected into <head>
   2. the page markup (#ghl-dummy)
   3. <script> page behaviour
 The styles go in first so the page never shows unstyled.
@@ -21,7 +23,9 @@ settings, script = script[start:end], script[:start] + script[end:]
 assert "`" not in css and "${" not in css
 
 head_script = f"""<script>
-{settings}
+{settings}</script>
+
+<script>
 // ---------- Page styles (added by the script so the page builder can't strip them) ----------
 (function () {{
   if (document.getElementById('ghl-dummy-css')) return;

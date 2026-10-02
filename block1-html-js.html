@@ -207,16 +207,18 @@ var LOGO_URL = "";
 
   // ---------- Logo ----------
   function initLogo(root) {
-    if (!LOGO_URL) return; // brand name only
-    root.style.setProperty('--logo', 'url("' + LOGO_URL + '")');
+    var logo = (typeof LOGO_URL === 'string') ? LOGO_URL.trim() : '';
+    if (!logo) return; // brand name only
+    root.style.setProperty('--logo', 'url("' + logo + '")');
     root.classList.add('has-logo');
   }
 
   // ---------- Book-a-call buttons -> booking link ----------
   function initBookingLinks(root) {
-    if (!BOOKING_URL) return; // keep the /contact fallback
+    var url = (typeof BOOKING_URL === 'string') ? BOOKING_URL.trim() : '';
+    if (!url) return; // keep the /contact fallback
     root.querySelectorAll('[data-book]').forEach(function (a) {
-      a.setAttribute('href', BOOKING_URL);
+      a.setAttribute('href', url);
     });
   }
 
@@ -301,6 +303,12 @@ var LOGO_URL = "";
     }, { threshold: 0.35 });
     io.observe(strip);
   }
+
+  // Safety net: never leave the page hidden, even if the styles fail to load
+  setTimeout(function () {
+    var r = document.getElementById('ghl-dummy');
+    if (r) r.style.visibility = 'visible';
+  }, 2500);
 
   window.addEventListener('hydrationDone', init);
   document.addEventListener('DOMContentLoaded', init);
