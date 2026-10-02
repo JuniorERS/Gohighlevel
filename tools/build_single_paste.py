@@ -1,11 +1,16 @@
-"""Build home-single-paste.html from block1-html-js.html + block2.css.
+"""Build the single-paste files for each page.
 
-Layout of the output (one paste into a GHL Custom JS/HTML element):
+Sources:
+  block1-html-js.html  Home markup + the shared settings and script
+  block2.css           shared styles for every page
+  pages/<name>.html    markup for the other pages (nav, sections, footer)
+
+Each output file (one paste into a GHL Custom JS/HTML element) is laid out as:
   1. <script> settings (BOOKING_URL, LOGO_URL) - kept separate so a typo here
      can't stop the styles from loading
-     <script> styles injected into <head>
-  2. the page markup (#ghl-dummy)
-  3. <script> page behaviour
+  2. <script> styles injected into <head>
+  3. the page markup (#ghl-dummy)
+  4. <script> page behaviour
 The styles go in first so the page never shows unstyled.
 
 Run: python3 tools/build_single_paste.py
@@ -13,17 +18,17 @@ Run: python3 tools/build_single_paste.py
 from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent
-html = (root / "block1-html-js.html").read_text()
+home = (root / "block1-html-js.html").read_text()
 css = (root / "block2.css").read_text()
+assert "`" not in css and "${" not in css
 
-markup, script = html.split("<script>\n", 1)
+home_markup, script = home.split("<script>\n", 1)
 start = script.index("// ============================================================\n// REQUIRED: PASTE YOUR BOOKING")
 logo_line = script.index("var LOGO_URL = ")
 end = script.index("\n", logo_line) + 1
 settings, script = script[start:end], script[:start] + script[end:]
-assert "`" not in css and "${" not in css
 
-head_script = f"""<script>
+head_scripts = f"""<script>
 {settings}</script>
 
 <script>
@@ -40,11 +45,18 @@ head_script = f"""<script>
 </script>
 
 """
-out = (
-    "<!-- ===== START: Rip & Roll Turf HOME page (copy everything down to the END line) ===== -->\n"
-    + head_script
-    + markup.rstrip("\n") + "\n\n<script>\n" + script.lstrip("\n").rstrip("\n")
-    + "\n<!-- ===== END: Rip & Roll Turf HOME page ===== -->\n"
-)
-(root / "home-single-paste.html").write_text(out)
-print("home-single-paste.html:", out.count("\n"), "lines")
+
+
+def build(markup: str, label: str, out_name: str) -> None:
+    out = (
+        f"<!-- ===== START: Rip & Roll Turf {label} page (copy everything down to the END line) ===== -->\n"
+        + head_scripts
+        + markup.rstrip("\n") + "\n\n<script>\n" + script.lstrip("\n").rstrip("\n")
+        + f"\n<!-- ===== END: Rip & Roll Turf {label} page ===== -->\n"
+    )
+    (root / out_name).write_text(out)
+    print(f"{out_name}: {out.count(chr(10))} lines")
+
+
+build(home_markup, "HOME", "home-single-paste.html")
+build((root / "pages" / "about.html").read_text(), "ABOUT", "about-single-paste.html")
