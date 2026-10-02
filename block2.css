@@ -248,6 +248,18 @@ html, body { overflow-x: clip; }
 #ghl-dummy .compare-card--us .compare-answer { color: var(--accent); }
 #ghl-dummy .compare-icon--yes { background: var(--accent); color: var(--ink); }
 
+/* ===== About: commitments ===== */
+#ghl-dummy .commit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 1000px; }
+#ghl-dummy .commit-card {
+  display: flex; align-items: flex-start; gap: 20px; padding: 28px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+#ghl-dummy .commit-card:hover { transform: translateY(-4px); border-color: rgba(240, 196, 18, 0.6); box-shadow: var(--shadow); }
+#ghl-dummy .commit-card .card-icon { margin-bottom: 0; flex-shrink: 0; }
+#ghl-dummy .commit-card h3 { font-family: var(--font-serif); font-size: 21px; font-weight: 600; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+#ghl-dummy .commit-card p { font-size: 15px; color: var(--muted); }
+
 /* ===== S6. Final CTA ===== */
 #ghl-dummy .cta {
   padding: 112px 0 104px; text-align: center;
@@ -330,6 +342,8 @@ html, body { overflow-x: clip; }
   #ghl-dummy .hero-ctas .text-link { justify-content: center; padding-left: 0; }
   #ghl-dummy .section-cta .btn { width: 100%; white-space: normal; text-align: center; }
   #ghl-dummy .compare-grid { grid-template-columns: 1fr; }
+  #ghl-dummy .commit-grid { grid-template-columns: 1fr; }
+  #ghl-dummy .commit-card { padding: 22px 20px; gap: 16px; }
   #ghl-dummy .footer-grid { grid-template-columns: 1fr 1fr; }
   #ghl-dummy .footer-brand { grid-column: 1 / -1; }
   #ghl-dummy .cta .btn { width: 100%; white-space: normal; }
