@@ -184,6 +184,13 @@
 
 var BOOKING_URL = "";
 
+// ============================================================
+// LOGO: upload your logo to GHL (Media Library), copy its link
+// and paste it between the quotes. Blank = brand name only.
+// ============================================================
+
+var LOGO_URL = "";
+
 (function () {
   function init() {
     if (window.__ghlDummyInit) return;
@@ -191,10 +198,18 @@ var BOOKING_URL = "";
     if (!root) return; // markup not there yet; a later event will retry
     window.__ghlDummyInit = true;
 
+    initLogo(root);
     initBookingLinks(root);
     initNav(root);
     initSmoothScroll(root);
     initCountUp(root);
+  }
+
+  // ---------- Logo ----------
+  function initLogo(root) {
+    if (!LOGO_URL) return; // brand name only
+    root.style.setProperty('--logo', 'url("' + LOGO_URL + '")');
+    root.classList.add('has-logo');
   }
 
   // ---------- Book-a-call buttons -> booking link ----------
