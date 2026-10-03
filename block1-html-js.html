@@ -189,6 +189,13 @@ var BOOKING_URL = "";
 
 var LOGO_URL = "https://assets.cdn.filesafe.space/lNWVwn8ZKQRoPLkE6rWQ/media/6abff76e85f560d16662860f.png";
 
+// ============================================================
+// CALENDAR (Contact page): paste your GHL calendar's booking link
+// between the quotes. Blank = "calendar coming soon" box.
+// ============================================================
+
+var CALENDAR_URL = "";
+
 (function () {
   function init() {
     if (window.__ghlDummyInit) return;
@@ -197,6 +204,7 @@ var LOGO_URL = "https://assets.cdn.filesafe.space/lNWVwn8ZKQRoPLkE6rWQ/media/6ab
     window.__ghlDummyInit = true;
 
     initLogo(root);
+    initCalendar(root);
     initBookingLinks(root);
     initNav(root);
     initSmoothScroll(root);
@@ -211,8 +219,28 @@ var LOGO_URL = "https://assets.cdn.filesafe.space/lNWVwn8ZKQRoPLkE6rWQ/media/6ab
     root.classList.add('has-logo');
   }
 
+  // ---------- Contact page calendar ----------
+  function initCalendar(root) {
+    var box = root.querySelector('[data-calendar]');
+    var url = (typeof CALENDAR_URL === 'string') ? CALENDAR_URL.trim() : '';
+    if (!box || !url) return; // keep the "coming soon" box
+    var frame = document.createElement('iframe');
+    frame.src = url;
+    frame.title = 'Book a discovery call';
+    frame.loading = 'lazy';
+    frame.className = 'calendar-frame';
+    box.innerHTML = '';
+    box.classList.add('has-calendar');
+    box.appendChild(frame);
+  }
+
   // ---------- Book-a-call buttons -> booking link ----------
   function initBookingLinks(root) {
+    // On the Contact page, booking buttons jump to the calendar on the page
+    if (root.querySelector('#calendar')) {
+      root.querySelectorAll('[data-book]').forEach(function (a) { a.setAttribute('href', '#calendar'); });
+      return;
+    }
     var url = (typeof BOOKING_URL === 'string') ? BOOKING_URL.trim() : '';
     if (!url) return; // keep the /contact fallback
     root.querySelectorAll('[data-book]').forEach(function (a) {

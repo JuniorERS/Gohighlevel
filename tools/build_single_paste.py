@@ -6,7 +6,7 @@ Sources:
   pages/<name>.html    markup for the other pages (nav, sections, footer)
 
 Each output file (one paste into a GHL Custom JS/HTML element) is laid out as:
-  1. <script> settings (BOOKING_URL, LOGO_URL) - kept separate so a typo here
+  1. <script> settings (BOOKING_URL, LOGO_URL, CALENDAR_URL) - kept separate so a typo here
      can't stop the styles from loading
   2. <script> styles injected into <head>
   3. the page markup (#ghl-dummy)
@@ -24,7 +24,7 @@ assert "`" not in css and "${" not in css
 
 home_markup, script = home.split("<script>\n", 1)
 start = script.index("// ============================================================\n// REQUIRED: PASTE YOUR BOOKING")
-logo_line = script.index("var LOGO_URL = ")
+logo_line = script.index("var CALENDAR_URL = ")
 end = script.index("\n", logo_line) + 1
 settings, script = script[start:end], script[:start] + script[end:]
 
@@ -60,3 +60,4 @@ def build(markup: str, label: str, out_name: str) -> None:
 
 build(home_markup, "HOME", "home-single-paste.html")
 build((root / "pages" / "about.html").read_text(), "ABOUT", "about-single-paste.html")
+build((root / "pages" / "contact.html").read_text(), "CONTACT", "contact-single-paste.html")
