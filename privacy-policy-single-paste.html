@@ -3,7 +3,7 @@
 // ============================================================
 // REQUIRED: PASTE YOUR BOOKING LINK BETWEEN THE QUOTES BELOW
 // (e.g. your GHL calendar link). Every "Book a Call" button uses it.
-// Leave it blank and the buttons go to your /contact page instead.
+// Leave it blank and the buttons go to the calendar on your /contact page.
 // ============================================================
 
 var BOOKING_URL = "";
@@ -459,9 +459,9 @@ html, body { overflow-x: clip; }
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
-        <a href="/contact" data-book class="btn btn-primary nav-mobile-cta">Book a Call</a>
+        <a href="/contact#calendar" data-book class="btn btn-primary nav-mobile-cta">Book a Call</a>
       </nav>
-      <a href="/contact" data-book class="btn btn-primary nav-cta">Book a Call</a>
+      <a href="/contact#calendar" data-book class="btn btn-primary nav-cta">Book a Call</a>
       <button type="button" class="burger" data-burger aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -551,7 +551,7 @@ html, body { overflow-x: clip; }
           <h4>Get in touch</h4>
           <!-- EMAIL: replace with your real email when your domain is set up -->
           <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
-          <a href="/contact" data-book>Book a discovery call</a>
+          <a href="/contact#calendar" data-book>Book a discovery call</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -658,7 +658,23 @@ html, body { overflow-x: clip; }
         window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
       });
     });
+    // Arriving from another page with a link like /contact#calendar:
+    // scroll to that section once the page has settled, clear of the sticky nav
+    var hash = window.location.hash;
+    if (hash && hash.length > 1) {
+      var target = null;
+      try { target = root.querySelector(hash); } catch (err) { target = null; }
+      if (target) {
+        var jump = function () {
+          var offset = nav ? nav.offsetHeight + 8 : 0;
+          window.scrollTo(0, Math.max(target.getBoundingClientRect().top + window.pageYOffset - offset, 0));
+        };
+        setTimeout(jump, 300);
+        setTimeout(jump, 1200);
+      }
+    }
   }
+
 
   // ---------- Stat strip: fade in + count-up (once, on scroll into view) ----------
   function initCountUp(root) {
