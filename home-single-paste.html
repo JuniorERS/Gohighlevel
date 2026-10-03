@@ -308,6 +308,8 @@ html, body { overflow-x: clip; }
 #ghl-dummy .calendar-soon .card-icon { margin-bottom: 18px; }
 #ghl-dummy .calendar-soon h3 { font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
 #ghl-dummy .calendar-soon p { font-size: 15px; color: var(--muted); }
+#ghl-dummy .calendar-fallback { margin-top: 14px; font-size: 14px; color: var(--muted); text-align: center; }
+#ghl-dummy .calendar-fallback a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
 #ghl-dummy .calendar-email { margin-top: 20px; font-size: 15px; color: var(--muted); text-align: center; }
 #ghl-dummy .calendar-email a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
 
@@ -657,6 +659,12 @@ html, body { overflow-x: clip; }
     box.innerHTML = '';
     box.classList.add('has-calendar');
     box.appendChild(frame);
+    // Safety net: some browsers (e.g. private windows) block embedded calendars
+    var help = document.createElement('p');
+    help.className = 'calendar-fallback';
+    help.innerHTML = 'Calendar not loading? <a target="_blank" rel="noopener">Open the booking page &rarr;</a>';
+    help.querySelector('a').setAttribute('href', url);
+    box.parentNode.insertBefore(help, box.nextSibling);
   }
 
   // ---------- Book-a-call buttons -> booking link ----------

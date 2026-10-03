@@ -232,6 +232,12 @@ var CALENDAR_URL = "https://api.leadconnectorhq.com/widget/bookings/rip-and-roll
     box.innerHTML = '';
     box.classList.add('has-calendar');
     box.appendChild(frame);
+    // Safety net: some browsers (e.g. private windows) block embedded calendars
+    var help = document.createElement('p');
+    help.className = 'calendar-fallback';
+    help.innerHTML = 'Calendar not loading? <a target="_blank" rel="noopener">Open the booking page &rarr;</a>';
+    help.querySelector('a').setAttribute('href', url);
+    box.parentNode.insertBefore(help, box.nextSibling);
   }
 
   // ---------- Book-a-call buttons -> booking link ----------
