@@ -61,3 +61,4 @@ def build(markup: str, label: str, out_name: str) -> None:
 build(home_markup, "HOME", "home-single-paste.html")
 build((root / "pages" / "about.html").read_text(), "ABOUT", "about-single-paste.html")
 build((root / "pages" / "contact.html").read_text(), "CONTACT", "contact-single-paste.html")
+build((root / "pages" / "privacy-policy.html").read_text(), "PRIVACY POLICY", "privacy-policy-single-paste.html")
