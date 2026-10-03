@@ -198,10 +198,12 @@ var CALENDAR_URL = "https://api.leadconnectorhq.com/widget/bookings/rip-and-roll
 
 (function () {
   function init() {
-    if (window.__ghlDummyInit) return;
     var root = document.getElementById('ghl-dummy');
-    if (!root) return; // markup not there yet; a later event will retry
-    window.__ghlDummyInit = true;
+    if (!root) return; // markup not there yet; a later check will retry
+    // The page builder can re-draw the page after it loads (hydration), which
+    // throws away our setup. Mark the element itself, so a fresh copy gets set up again.
+    if (root.getAttribute('data-ready') === '1') return;
+    root.setAttribute('data-ready', '1');
 
     initLogo(root);
     initCalendar(root);
@@ -360,6 +362,13 @@ var CALENDAR_URL = "https://api.leadconnectorhq.com/widget/bookings/rip-and-roll
 
   window.addEventListener('hydrationDone', init);
   document.addEventListener('DOMContentLoaded', init);
+  window.addEventListener('load', init);
   if (document.readyState !== 'loading') init();
+  // Keep checking for a few seconds in case the page gets re-drawn after loading
+  var checks = 0;
+  var watcher = setInterval(function () {
+    init();
+    if (++checks >= 40) clearInterval(watcher);
+  }, 250);
 })();
 </script>
